@@ -1,0 +1,1104 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "discourageImplicitMeasures": true,
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/DESKTOP-2I6R5M0;ContosoRetailDW",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "DESKTOP-4O3HP4J",
+            "database": "ContosoRetailDW"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "desktop-4o3hp4j;ContosoRetailDW",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Employees",
+        "columns": [
+          {
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "sourceColumn": "EmployeeKey"
+          },
+          {
+            "name": "FullName",
+            "dataType": "string",
+            "sourceColumn": "FullName"
+          },
+          {
+            "name": "Level1",
+            "dataType": "string",
+            "sourceColumn": "Level1"
+          },
+          {
+            "name": "Level2",
+            "dataType": "string",
+            "sourceColumn": "Level2"
+          },
+          {
+            "name": "Level3",
+            "dataType": "string",
+            "sourceColumn": "Level3"
+          },
+          {
+            "name": "Level4",
+            "dataType": "string",
+            "sourceColumn": "Level4"
+          },
+          {
+            "name": "Level5",
+            "dataType": "string",
+            "sourceColumn": "Level5"
+          },
+          {
+            "name": "TreePath",
+            "dataType": "string",
+            "sourceColumn": "TreePath"
+          },
+          {
+            "name": "TreeDepth",
+            "dataType": "int64",
+            "sourceColumn": "TreeDepth"
+          },
+          {
+            "name": "EmpPhoto",
+            "dataType": "string",
+            "sourceColumn": "EmpPhoto"
+          },
+          {
+            "name": "DepartmentName",
+            "dataType": "string",
+            "sourceColumn": "DepartmentName"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "HireDate",
+            "dataType": "dateTime",
+            "sourceColumn": "HireDate"
+          },
+          {
+            "name": "MaritalStatus",
+            "dataType": "string",
+            "sourceColumn": "MaritalStatus"
+          },
+          {
+            "name": "LastLong",
+            "dataType": "int64",
+            "sourceColumn": "LastLong"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_EmployeeHierarchyTabular = Source{[Schema=\"dbo\",Item=\"VW_EmployeeHierarchyTabular\"]}[Data]",
+                "in",
+                "    dbo_VW_EmployeeHierarchyTabular"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Employees Hierarchy",
+            "levels": [
+              {
+                "name": "Level1",
+                "ordinal": 0,
+                "column": "Level1"
+              },
+              {
+                "name": "Level2",
+                "ordinal": 1,
+                "column": "Level2"
+              },
+              {
+                "name": "Level3",
+                "ordinal": 2,
+                "column": "Level3"
+              },
+              {
+                "name": "Level4",
+                "ordinal": 3,
+                "column": "Level4"
+              },
+              {
+                "name": "Level5",
+                "ordinal": 4,
+                "column": "Level5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "StoreKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "StoreKey"
+          },
+          {
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeKey"
+          },
+          {
+            "name": "CurrencyKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CurrencyKey"
+          },
+          {
+            "name": "PromotionKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PromotionKey"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "UnitCost",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "UnitCost"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "ReturnAmount",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "ReturnAmount"
+          },
+          {
+            "name": "ReturnQuantity",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ReturnQuantity"
+          },
+          {
+            "name": "DiscountQuantity",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DiscountQuantity"
+          },
+          {
+            "name": "DiscountAmount",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "DiscountAmount"
+          },
+          {
+            "name": "TotalCost",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "TotalCost"
+          },
+          {
+            "name": "SalesAmount",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "SalesAmount"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "SaleCluster",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "SaleCluster"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_FactSale = Source{[Schema=\"dbo\",Item=\"VW_FactSale\"]}[Data]",
+                "in",
+                "    dbo_VW_FactSale"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "M_Sales Amount",
+            "expression": " sum(Sales[SalesAmount])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "M_Sales Amount Best Emp",
+            "expression": [
+              "",
+              "CALCULATE (",
+              "    [M_Sales Amount],",
+              "    FILTER (",
+              "        Employees,",
+              "        [FullName] = MAX ( 'Best Employee In Month'[BestMonthEmp] )",
+              "    )",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Best Emp Name",
+            "expression": [
+              "",
+              "IF (",
+              "    NOT ISBLANK ( [M_Sales Amount] ),",
+              "    CALCULATE (",
+              "        MAX ( Employees[FullName] ),",
+              "        FILTER (",
+              "            ALLNOBLANKROW ( Employees[FullName] ),",
+              "            RANKX ( Employees, [M_Sales Amount] ) = 1",
+              "        )",
+              "    )",
+              ")",
+              ""
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "Best Emp Photo",
+            "expression": [
+              "",
+              "IF (",
+              "    NOT ISBLANK ( [M_Sales Amount] ),",
+              "    CALCULATE (",
+              "        MAX ( Employees[EmpPhoto] ),",
+              "        FILTER (",
+              "            ALLNOBLANKROW ( Employees[FullName] ),",
+              "            RANKX ( Employees, [M_Sales Amount] ) = 1",
+              "        )",
+              "    )",
+              ")"
+            ],
+            "isHidden": true
+          },
+          {
+            "name": "M_Target Sales Amount",
+            "expression": " SUM(SaleTarget[DayTargetSalesAmount])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "M_Variance from Target",
+            "expression": " ([M_Sales Amount] - [M_Target Sales Amount]) / [M_Target Sales Amount]",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "M_Variance Target",
+            "expression": " 0"
+          },
+          {
+            "name": "M_Total Cost",
+            "expression": " sum(Sales[TotalCost])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "M_Gross Profit",
+            "expression": " [M_Sales Amount] - [M_Total Cost]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "M_Gross Profit Margin",
+            "expression": " ([M_Sales Amount] - [M_Total Cost])/ [M_Sales Amount] ",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "M_Gross Profit Margin Target",
+            "expression": " 0.55",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "M_Sales Amount Year Ago",
+            "expression": [
+              " ",
+              "      VAR YearAgo =",
+              "            MAX ( 'Date'[PersianYear] ) - 1",
+              "      RETURN",
+              "            CALCULATE (",
+              "                 [M_Sales Amount],",
+              "                 FILTER (",
+              "                     ALL ( 'Date' ),",
+              "                     'Date'[PersianYear] = YearAgo",
+              "                         && 'Date'[PersianMonthName] = MAX ( 'Date'[PersianMonthName] )                         ",
+              "                 )",
+              "             )",
+              "           ",
+              "                ",
+              "           "
+            ]
+          },
+          {
+            "name": "M_Avg Temprator",
+            "expression": " AVERAGE('Date'[Temperature])"
+          },
+          {
+            "name": "M_Customers Count",
+            "expression": [
+              "DISTINCTCOUNT(Sales[CustomerKey])",
+              ""
+            ],
+            "formatString": "#,###"
+          },
+          {
+            "name": "M_Avg Sales Per Cusomer",
+            "expression": " [M_Sales Amount] / [M_Customers Count]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "New Measure",
+            "expression": "calculate([M_Sales Amount],'Time Intelligence'[Name]=\"YOY\")"
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "DateTimeKey"
+          },
+          {
+            "name": "GregorianDate",
+            "dataType": "dateTime",
+            "sourceColumn": "GregorianDate"
+          },
+          {
+            "name": "PersianYear",
+            "dataType": "int64",
+            "sourceColumn": "PersianYear",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PersianQuarterNO",
+            "dataType": "int64",
+            "sourceColumn": "PersianQuarterNO"
+          },
+          {
+            "name": "PersianQuarterName",
+            "dataType": "string",
+            "sourceColumn": "PersianQuarterName"
+          },
+          {
+            "name": "PersianMonthNO",
+            "dataType": "string",
+            "sourceColumn": "PersianMonthNO"
+          },
+          {
+            "name": "PersianMonthName",
+            "dataType": "string",
+            "sourceColumn": "PersianMonthName",
+            "sortByColumn": "PersianMonthNO"
+          },
+          {
+            "name": "PersianDateString",
+            "dataType": "string",
+            "sourceColumn": "PersianDateString"
+          },
+          {
+            "name": "GregorianLastYearDay",
+            "dataType": "int64",
+            "sourceColumn": "GregorianLastYearDay"
+          },
+          {
+            "name": "DayOfPersianMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayOfPersianMonth"
+          },
+          {
+            "name": "PersianYearMonth",
+            "dataType": "string",
+            "sourceColumn": "PersianYearMonth"
+          },
+          {
+            "name": "PersianDayOfWeek",
+            "dataType": "string",
+            "sourceColumn": "PersianDayOfWeek",
+            "sortByColumn": "PersianNoDayOfWeek"
+          },
+          {
+            "name": "PersianNoDayOfWeek",
+            "dataType": "int64",
+            "sourceColumn": "PersianNoDayOfWeek"
+          },
+          {
+            "name": "Temperature",
+            "dataType": "int64",
+            "sourceColumn": "Temperature"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Value.NativeQuery(#\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\", \"SELECT * FROM VW_DimDatePersian\"),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(Source,{\"DateKey\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Calendar",
+            "levels": [
+              {
+                "name": "PersianYear",
+                "ordinal": 0,
+                "column": "PersianYear"
+              },
+              {
+                "name": "PersianMonthName",
+                "ordinal": 1,
+                "column": "PersianMonthName"
+              },
+              {
+                "name": "PersianDateString",
+                "ordinal": 2,
+                "column": "PersianDateString"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Stores",
+        "columns": [
+          {
+            "name": "StoreKey",
+            "dataType": "int64",
+            "sourceColumn": "StoreKey"
+          },
+          {
+            "name": "StoreName",
+            "dataType": "string",
+            "sourceColumn": "StoreName"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status"
+          },
+          {
+            "name": "GeoLocation",
+            "dataType": "string",
+            "sourceColumn": "GeoLocation"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_DimStore = Source{[Schema=\"dbo\",Item=\"VW_DimStore\"]}[Data]",
+                "in",
+                "    dbo_VW_DimStore"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Promotion",
+        "columns": [
+          {
+            "name": "PromotionKey",
+            "dataType": "int64",
+            "sourceColumn": "PromotionKey"
+          },
+          {
+            "name": "PromotionName",
+            "dataType": "string",
+            "sourceColumn": "PromotionName"
+          },
+          {
+            "name": "PromotionDuring",
+            "dataType": "int64",
+            "sourceColumn": "PromotionDuring"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_DimPromotion = Source{[Schema=\"dbo\",Item=\"VW_DimPromotion\"]}[Data]",
+                "in",
+                "    dbo_VW_DimPromotion"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "SubcategoryKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductSubcategoryKey"
+          },
+          {
+            "name": "ColorName",
+            "dataType": "string",
+            "sourceColumn": "ColorName"
+          },
+          {
+            "name": "BrandName",
+            "dataType": "string",
+            "sourceColumn": "BrandName"
+          },
+          {
+            "name": "Manufacturer",
+            "dataType": "string",
+            "sourceColumn": "Manufacturer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_DimProduct = Source{[Schema=\"dbo\",Item=\"VW_DimProduct\"]}[Data]",
+                "in",
+                "    dbo_VW_DimProduct"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "SubCategory",
+        "columns": [
+          {
+            "name": "SubcategoryKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductSubcategoryKey"
+          },
+          {
+            "name": "SubcategoryName",
+            "dataType": "string",
+            "sourceColumn": "ProductSubcategoryName"
+          },
+          {
+            "name": "CategoryKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductCategoryKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_DimProductSubcategory = Source{[Schema=\"dbo\",Item=\"VW_DimProductSubcategory\"]}[Data]",
+                "in",
+                "    dbo_VW_DimProductSubcategory"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Category",
+        "columns": [
+          {
+            "name": "CategoryKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductCategoryKey"
+          },
+          {
+            "name": "CategoryName",
+            "dataType": "string",
+            "sourceColumn": "ProductCategoryName"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_DimProductCategory = Source{[Schema=\"dbo\",Item=\"DimProductCategory\"]}[Data],",
+                "    #\"Removed Columns\" = Table.RemoveColumns(dbo_DimProductCategory,{\"ProductCategoryLabel\", \"ProductCategoryDescription\", \"ETLLoadID\", \"LoadDate\", \"UpdateDate\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Best Employee In Month",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "PersianYearMonth",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Date[PersianYearMonth]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BestMonthEmp",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[BestMonthEmp]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "BestMonthEmpPic",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[BestMonthEmpPic]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                " ",
+                " FILTER(SUMMARIZE(ALLNOBLANKROW('Date')",
+                "                      ,'Date'[PersianYearMonth]",
+                "                      ,\"BestMonthEmp\",[Best Emp Name]",
+                "                      ,\"BestMonthEmpPic\",[Best Emp Photo]",
+                "                    )",
+                "        ,NOT ISBLANK([BestMonthEmp])",
+                "        )",
+                ""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "SaleTarget",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "dateTime",
+            "sourceColumn": "DateTimeKey"
+          },
+          {
+            "name": "DayTargetSalesAmount",
+            "dataType": "double",
+            "sourceColumn": "DayTargetSalesAmount"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_SaleTarget = Source{[Schema=\"dbo\",Item=\"VW_SaleTarget\"]}[Data]",
+                "in",
+                "    dbo_VW_SaleTarget"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Customers",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "GeographyKey",
+            "dataType": "int64",
+            "sourceColumn": "GeographyKey"
+          },
+          {
+            "name": "MaritalStatus",
+            "dataType": "string",
+            "sourceColumn": "MaritalStatus"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "YearlyIncome",
+            "dataType": "decimal",
+            "sourceColumn": "YearlyIncome"
+          },
+          {
+            "name": "Education",
+            "dataType": "string",
+            "sourceColumn": "Education"
+          },
+          {
+            "name": "Occupation",
+            "dataType": "string",
+            "sourceColumn": "Occupation"
+          },
+          {
+            "name": "HouseOwnerFlag",
+            "dataType": "string",
+            "sourceColumn": "HouseOwnerFlag"
+          },
+          {
+            "name": "NumberCarsOwned",
+            "dataType": "int64",
+            "sourceColumn": "NumberCarsOwned"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_Customers = Source{[Schema=\"dbo\",Item=\"VW_Customers\"]}[Data]",
+                "in",
+                "    dbo_VW_Customers"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "SaleCluster",
+        "columns": [
+          {
+            "name": "SaleCluster",
+            "dataType": "string",
+            "sourceColumn": "SaleCluster",
+            "sortByColumn": "Ordinal"
+          },
+          {
+            "name": "Ordinal",
+            "dataType": "int64",
+            "sourceColumn": "Ordinal"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-2I6R5M0;ContosoRetailDW\",",
+                "    dbo_VW_SaleCluster = Source{[Schema=\"dbo\",Item=\"VW_SaleCluster\"]}[Data]",
+                "in",
+                "    dbo_VW_SaleCluster"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Time Intelligence",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "YOY",
+              "expression": [
+                "    VAR YearAgo =",
+                "        MAX ( 'Date'[PersianYear] ) - 1",
+                "    RETURN",
+                "        CALCULATE (",
+                "            SELECTEDMEASURE (),",
+                "            FILTER (",
+                "                ALL ( 'Date' ),",
+                "                'Date'[PersianYear] = YearAgo",
+                "                    && 'Date'[PersianMonthName] = MAX ( 'Date'[PersianMonthName] )",
+                "            )",
+                "        )",
+                ""
+              ]
+            },
+            {
+              "name": "YTD",
+              "expression": [
+                "        IF (",
+                "            ISBLANK ( SelectedMeasure() ),",
+                "            BLANK (),",
+                "            CALCULATE (",
+                "                SelectedMeasure(),",
+                "                FILTER (",
+                "                    ALL ( 'Date' ),",
+                "                    'Date'[DateKey] <= MAX ( 'Date'[DateKey] )",
+                "                    \t&& 'Date'[PersianYear] = MAX ( 'Date'[PersianYear] )",
+                "                )",
+                "            )",
+                "        )"
+              ]
+            }
+          ]
+        },
+        "columns": [
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "6411fa7e-174b-447b-89e8-68a76bdf0a03",
+        "fromTable": "Product",
+        "fromColumn": "SubcategoryKey",
+        "toTable": "SubCategory",
+        "toColumn": "SubcategoryKey"
+      },
+      {
+        "name": "af78f664-4d5d-4e2c-b08c-51c3ec8f8631",
+        "fromTable": "SubCategory",
+        "fromColumn": "CategoryKey",
+        "toTable": "Category",
+        "toColumn": "CategoryKey"
+      },
+      {
+        "name": "8b1c02b4-7aea-45b2-95ee-7dc682378e01",
+        "fromTable": "Sales",
+        "fromColumn": "ProductKey",
+        "toTable": "Product",
+        "toColumn": "ProductKey"
+      },
+      {
+        "name": "624c76ff-33da-44d5-b342-dfdf43787ae8",
+        "fromTable": "Sales",
+        "fromColumn": "PromotionKey",
+        "toTable": "Promotion",
+        "toColumn": "PromotionKey"
+      },
+      {
+        "name": "fe8e6314-b622-4346-8ca0-77418f847057",
+        "fromTable": "Sales",
+        "fromColumn": "StoreKey",
+        "toTable": "Stores",
+        "toColumn": "StoreKey"
+      },
+      {
+        "name": "f3ea9fae-712b-4d2e-b0a7-45bc1e509fba",
+        "fromTable": "Sales",
+        "fromColumn": "DateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "b0642d06-9e26-4dcb-916a-4b98a65e78c4",
+        "fromTable": "Sales",
+        "fromColumn": "EmployeeKey",
+        "toTable": "Employees",
+        "toColumn": "EmployeeKey"
+      },
+      {
+        "name": "e95b6d04-f8c9-4c9f-a559-ccc382e69658",
+        "fromTable": "Date",
+        "fromColumn": "PersianYearMonth",
+        "toTable": "Best Employee In Month",
+        "toColumn": "PersianYearMonth",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "91481b26-d870-45ae-a999-57eb9d8d6ff8",
+        "fromTable": "Best Employee In Month",
+        "fromColumn": "BestMonthEmp",
+        "toTable": "Employees",
+        "toColumn": "FullName",
+        "isActive": false,
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "50e00d7a-f0f2-4b6d-bbd0-e8b7ce2d272d",
+        "fromTable": "SaleTarget",
+        "fromColumn": "DateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "285ca864-7224-4e70-8b0d-7f350fef09e7",
+        "fromTable": "SaleTarget",
+        "fromColumn": "ProductKey",
+        "toTable": "Product",
+        "toColumn": "ProductKey"
+      },
+      {
+        "name": "583f3eb8-46c9-4ff9-a2a4-e6a62bb66d05",
+        "fromTable": "Sales",
+        "fromColumn": "CustomerKey",
+        "toTable": "Customers",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "47d06730-180f-4ba0-b3a1-e28c647a8ae7",
+        "fromTable": "Sales",
+        "fromColumn": "SaleCluster",
+        "toTable": "SaleCluster",
+        "toColumn": "SaleCluster"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      },
+      {
+        "name": "__TEdtr",
+        "value": "1"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
